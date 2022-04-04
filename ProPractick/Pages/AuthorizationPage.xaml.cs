@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProPractick
+namespace ProPractick.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AuthorizationPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthorizationPage : Page
     {
-        public MainWindow()
+        public AuthorizationPage()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.AuthorizationPage());
         }
     }
 }
