@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a209d732df814e38989fe9118e55ebdc" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopModel.Client" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Country" Width="1.5" PointX="7.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Order" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Product" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ProductCountry" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ProductIntake" Width="1.5" PointX="10" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ProductIntakeProduct" Width="1.5" PointX="12.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ProductOrder" Width="1.5" PointX="9.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Role" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.StatusIntake" Width="1.5" PointX="10" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.StatusOrder" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Supplier" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Unit" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.User" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Worker" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopModel.FK_Client_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Order_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Order_Client1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductCountry_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Order_StatusOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Order_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Product_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductCountry_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductIntakeProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductOrder_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductIntake_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductIntakeProduct_ProductIntake" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ProductIntakeProduct_StatusIntake" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Worker_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
