@@ -7,24 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProPractick
+namespace ProPractick.DB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Country()
+        public Product()
         {
             this.ProductCountry = new HashSet<ProductCountry>();
+            this.ProductIntakeProduct = new HashSet<ProductIntakeProduct>();
+            this.ProductOrder = new HashSet<ProductOrder>();
         }
     
         public int Id { get; set; }
+        public byte[] Photo { get; set; }
         public string Name { get; set; }
-        public string Color { get; set; }
+        public string Description { get; set; }
+        public int UnitId { get; set; }
+        public System.DateTime AddDate { get; set; }
     
+        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductCountry> ProductCountry { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductIntakeProduct> ProductIntakeProduct { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductOrder> ProductOrder { get; set; }
     }
 }

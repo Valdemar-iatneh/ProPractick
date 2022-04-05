@@ -64,64 +64,65 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Client.cs">
+    <Compile Include="DB\Client.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Country.cs">
+    <Compile Include="DB\Country.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs">
+    <Compile Include="DB\DBConnection.cs" />
+    <Compile Include="DB\Order.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs">
+    <Compile Include="DB\Product.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductCountry.cs">
+    <Compile Include="DB\ProductCountry.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductIntake.cs">
+    <Compile Include="DB\ProductIntake.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductIntakeProduct.cs">
+    <Compile Include="DB\ProductIntakeProduct.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductOrder.cs">
+    <Compile Include="DB\ProductOrder.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Role.cs">
+    <Compile Include="DB\Role.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShopModel.Context.cs">
+    <Compile Include="DB\ShopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShopModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShopModel.cs">
+    <Compile Include="DB\ShopModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShopModel.Designer.cs">
+    <Compile Include="DB\ShopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShopModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="StatusIntake.cs">
+    <Compile Include="DB\StatusIntake.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="StatusOrder.cs">
+    <Compile Include="DB\StatusOrder.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Supplier.cs">
+    <Compile Include="DB\Supplier.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Unit.cs">
+    <Compile Include="DB\Unit.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
+    <Compile Include="DB\User.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Worker.cs">
+    <Compile Include="DB\Worker.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -140,10 +141,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ProductListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductListPage.xaml.cs">
+      <DependentUpon>ProductListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -167,11 +175,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="ShopModel.edmx">
+    <EntityDeploy Include="DB\ShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ShopModel.edmx.diagram">
+    <None Include="DB\ShopModel.edmx.diagram">
       <DependentUpon>ShopModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
@@ -182,12 +190,12 @@
     <Resource Include="Images\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ShopModel.Context.tt">
+    <Content Include="DB\ShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ShopModel.Context.cs</LastGenOutput>
       <DependentUpon>ShopModel.edmx</DependentUpon>
     </Content>
-    <Content Include="ShopModel.tt">
+    <Content Include="DB\ShopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShopModel.edmx</DependentUpon>
       <LastGenOutput>ShopModel.cs</LastGenOutput>

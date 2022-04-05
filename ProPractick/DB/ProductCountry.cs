@@ -7,19 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProPractick
+namespace ProPractick.DB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductOrder
+    public partial class ProductCountry
     {
         public int Id { get; set; }
+        public int CountryId { get; set; }
         public int ProductId { get; set; }
-        public int OrderId { get; set; }
-        public int Count { get; set; }
     
-        public virtual Order Order { get; set; }
+        public virtual Country Country { get; set; }
         public virtual Product Product { get; set; }
     }
 }

@@ -54,12 +54,14 @@
             <Label Style="{StaticResource labelForAuthorStyle}"
                 Content="Login"/>
             <TextBox Style="{StaticResource textBoxStyle}"
+                x:Name="LoginTB"
                 Margin="0 0 0 10"
                 Grid.Column="1"
                 Grid.Row="2"/>
             <Label Style="{StaticResource labelForAuthorStyle}"
                 Content="Password"/>
             <PasswordBox Style="{StaticResource passwordBoxStyle}"
+                x:Name="PasswordTB"
                 Grid.Column="1"
                 Grid.Row="3"/>
         </StackPanel>
@@ -70,12 +72,15 @@
             HorizontalAlignment="Center"
             Orientation="Horizontal">
             <Button Style="{StaticResource buttonStyle}"
-                Content="Authorization"/>
+                Content="Authorization" 
+                Click="ButtonAuthoriz_Click"/>
             <Button Style="{StaticResource buttonStyle}"
                 Margin="30, 0, 0, 0"
+                Click="ButtonRegistr_Click"
                 Content="Registration"/>
         </StackPanel>
         <CheckBox
+            x:Name="RememberMeCB"
             Margin="10"
             FontFamily="Arial"
             FontSize="15"

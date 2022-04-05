@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProPractick
+namespace ProPractick.DB
 {
     using System;
     using System.Data.Entity;
