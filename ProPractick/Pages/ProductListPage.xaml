@@ -6,9 +6,37 @@
       xmlns:local="clr-namespace:ProPractick.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Background="Bisque"
+      Background="#ffcfc2"
       Title="ProductListPage">
 
+    <Page.Resources>
+        <Style x:Key="DGHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="#ad7261"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Key="DGCellStyle" TargetType="DataGridCell">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+        <Style x:Key="BtnStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Background" Value="#ad7261"/>
+            <Setter Property="Foreground" Value="#fff"/>
+        </Style>
+        <Style x:Key="CBStyle" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+        <Style x:Key="TBStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <StackPanel Margin="5">
             <StackPanel>
@@ -16,7 +44,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
                     <ComboBox
-                        Width="50"
+                        Style="{StaticResource CBStyle}"
                         Margin="10"
                         Name="SortCount"
                         SelectionChanged="SortCount_SelectionChanged">
@@ -34,20 +62,20 @@
                             Selected="ComboBoxItem_Selected"/>
                     </ComboBox>
                     <TextBox
+                        Style="{StaticResource TBStyle}"
                         Height="25"
                         Width="150"
                         x:Name="SearchNameDescTb"
                         TextChanged="SearchNameDescTb_TextChanged"/>
                     <ComboBox
+                        Style="{StaticResource CBStyle}"
                         Margin="10, 0"
-                        Height="25"
-                        Width="150"
                         x:Name="UnitCb"
                         SelectionChanged="UnitCb_SelectionChanged"/>
                     <ComboBox
+                        Style="{StaticResource CBStyle}"
                         Text="Dfvvcv"
-                        Height="25"
-                        Width="100"
+                        Width="200"
                         x:Name="DateCb"
                         SelectionChanged="DateCb_SelectionChanged">
                         <ComboBoxItem Content="Сбросить"/>
@@ -55,9 +83,9 @@
                         <ComboBoxItem Content="По убыванию"/>
                     </ComboBox>
                     <ComboBox
+                        Style="{StaticResource CBStyle}"
                         Margin="10, 0"
-                        Height="25"
-                        Width="100"
+                        Width="130"
                         x:Name="AlfCb"
                         SelectionChanged="AlfCb_SelectionChanged">
                         <ComboBoxItem Content="Сбросить"/>
@@ -72,13 +100,15 @@
                 </StackPanel>
                 
                 <DataGrid
-                    Height="250"
-                    Width="700"
+                    Height="550"
+                    Width="1000"
                     Margin="5"
                     AutoGenerateColumns="False"
                     Name="ProductList">
                     <DataGrid.Columns>
                         <DataGridTextColumn
+                            HeaderStyle="{StaticResource DGHeaderStyle}"
+                            CellStyle="{StaticResource DGCellStyle}"
                             Header="№"
                             Binding="{Binding Id}"/>
 
@@ -93,15 +123,24 @@
                         </DataGridTemplateColumn>
 
                         <DataGridTextColumn 
+                            HeaderStyle="{StaticResource DGHeaderStyle}"
+                            CellStyle="{StaticResource DGCellStyle}"
                             Header="Name"
                             Binding="{Binding Name}"/>
                         <DataGridTextColumn
+                            HeaderStyle="{StaticResource DGHeaderStyle}"
+                            CellStyle="{StaticResource DGCellStyle}"
+                            FontSize="16"
                             Header="Description"
                             Binding="{Binding Description}"/>
                         <DataGridTextColumn
+                            HeaderStyle="{StaticResource DGHeaderStyle}"
+                            CellStyle="{StaticResource DGCellStyle}"
                             Header="Unit"
                             Binding="{Binding Unit.Name}"/>
                         <DataGridTextColumn
+                            HeaderStyle="{StaticResource DGHeaderStyle}"
+                            CellStyle="{StaticResource DGCellStyle}"
                             Header="Date"
                             Binding="{Binding AddDate, StringFormat='dd.MM.yy'}"/>
 
@@ -127,29 +166,32 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
                 <Button
-                    Margin="5"
+                    Style="{StaticResource BtnStyle}"
+                    Margin="0, 10"
                     Content="&lt;"
-                    Width="40"
                     Name="BackListBtn"
                     Click="BackListBtn_Click"/>
                 <Button
-                    Margin="5"
+                    Style="{StaticResource BtnStyle}"
+                    Margin="0, 10, 10, 10"
                     Content="&gt;"
-                    Width="40"
                     Name="ForwardListBtn"
                     Click="ForwardListBtn_Click"/>
                 <Button
-                    Height="25"
+                    Style="{StaticResource BtnStyle}"
+                    Width="100"
                     Content="Add"
                     x:Name="AddBtn"
                     Click="AddBtn_Click"/>
                 <Button
-                    Height="25"
+                    Style="{StaticResource BtnStyle}"
+                    Width="100"
                     Content="Edit"
                     x:Name="EditBtn"
                     Click="EditBtn_Click"/>
                 <Button
-                    Height="25"
+                    Style="{StaticResource BtnStyle}"
+                    Width="120"
                     Content="Delete"
                     x:Name="DeleteBtn"
                     Click="DeleteBtn_Click"/>
