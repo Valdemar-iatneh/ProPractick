@@ -6,9 +6,154 @@
       xmlns:local="clr-namespace:ProPractick.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="Bisque"
       Title="ProductListPage">
 
     <Grid>
-        
+        <StackPanel Margin="5">
+            <StackPanel>
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                    <ComboBox
+                        Width="50"
+                        Margin="10"
+                        Name="SortCount"
+                        SelectionChanged="SortCount_SelectionChanged">
+                        <ComboBoxItem 
+                            Content="All" 
+                            Selected="ComboBoxItem_Selected"/>
+                        <ComboBoxItem 
+                            Content="2" 
+                            Selected="ComboBoxItem_Selected"/>
+                        <ComboBoxItem 
+                            Content="3" 
+                            Selected="ComboBoxItem_Selected"/>
+                        <ComboBoxItem 
+                            Content="4" 
+                            Selected="ComboBoxItem_Selected"/>
+                    </ComboBox>
+                    <TextBox
+                        Height="25"
+                        Width="150"
+                        x:Name="SearchNameDescTb"
+                        TextChanged="SearchNameDescTb_TextChanged"/>
+                    <ComboBox
+                        Margin="10, 0"
+                        Height="25"
+                        Width="150"
+                        x:Name="UnitCb"
+                        SelectionChanged="UnitCb_SelectionChanged"/>
+                    <ComboBox
+                        Text="Dfvvcv"
+                        Height="25"
+                        Width="100"
+                        x:Name="DateCb"
+                        SelectionChanged="DateCb_SelectionChanged">
+                        <ComboBoxItem Content="Сбросить"/>
+                        <ComboBoxItem Content="По возрастанию"/>
+                        <ComboBoxItem Content="По убыванию"/>
+                    </ComboBox>
+                    <ComboBox
+                        Margin="10, 0"
+                        Height="25"
+                        Width="100"
+                        x:Name="AlfCb"
+                        SelectionChanged="AlfCb_SelectionChanged">
+                        <ComboBoxItem Content="Сбросить"/>
+                        <ComboBoxItem Content="от А до Я"/>
+                        <ComboBoxItem Content="от Я до А"/>
+                    </ComboBox>
+                    <Button
+                        Height="25"
+                        Content="Дата текущего месяца"
+                        x:Name="DateMounthBtn"
+                        Click="DateMounthBtn_Click"/>
+                </StackPanel>
+                
+                <DataGrid
+                    Height="250"
+                    Width="700"
+                    Margin="5"
+                    AutoGenerateColumns="False"
+                    Name="ProductList">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="№"
+                            Binding="{Binding Id}"/>
+
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image 
+                                        Source="{Binding Photo}"
+                                        Height="60"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn 
+                            Header="Name"
+                            Binding="{Binding Name}"/>
+                        <DataGridTextColumn
+                            Header="Description"
+                            Binding="{Binding Description}"/>
+                        <DataGridTextColumn
+                            Header="Unit"
+                            Binding="{Binding Unit.Name}"/>
+                        <DataGridTextColumn
+                            Header="Date"
+                            Binding="{Binding AddDate, StringFormat='dd.MM.yy'}"/>
+
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ListView ItemsSource="{Binding ProductCountry}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <StackPanel 
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <Button
+                    Margin="5"
+                    Content="&lt;"
+                    Width="40"
+                    Name="BackListBtn"
+                    Click="BackListBtn_Click"/>
+                <Button
+                    Margin="5"
+                    Content="&gt;"
+                    Width="40"
+                    Name="ForwardListBtn"
+                    Click="ForwardListBtn_Click"/>
+                <Button
+                    Height="25"
+                    Content="Add"
+                    x:Name="AddBtn"
+                    Click="AddBtn_Click"/>
+                <Button
+                    Height="25"
+                    Content="Edit"
+                    x:Name="EditBtn"
+                    Click="EditBtn_Click"/>
+                <Button
+                    Height="25"
+                    Content="Delete"
+                    x:Name="DeleteBtn"
+                    Click="DeleteBtn_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

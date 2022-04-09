@@ -27,6 +27,8 @@ namespace ProPractick.Pages
         {
             InitializeComponent();
             LoginTB.Text = Properties.Settings.Default.Login;
+            LoginTB.Text = "Kami";
+            PasswordTB.Password = "K99mi";
         }
 
         private void ButtonAuthoriz_Click(object sender, RoutedEventArgs e)
