@@ -26,5 +26,17 @@ namespace ProPractick
             InitializeComponent();
             MainFrame.Navigate(new Pages.AuthorizationPage());
         }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack) 
+                MainFrame.GoBack();
+        }
+
+        private void ForwardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoForward)
+                MainFrame.GoForward();
+        }
     }
 }

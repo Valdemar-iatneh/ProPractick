@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProPractick.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Background="#ffcfc2"
       Title="ProductListPage">
 
@@ -21,7 +21,7 @@
         </Style>
         <Style x:Key="BtnStyle" TargetType="Button">
             <Setter Property="Width" Value="50"/>
-            <Setter Property="Height" Value="100"/>
+            <Setter Property="Height" Value="80"/>
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="Background" Value="#ad7261"/>
             <Setter Property="Foreground" Value="#fff"/>
@@ -33,6 +33,10 @@
         </Style>
         <Style x:Key="TBStyle" TargetType="TextBox">
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Medium"/>
         </Style>
     </Page.Resources>
@@ -100,8 +104,8 @@
                 </StackPanel>
                 
                 <DataGrid
-                    Height="550"
-                    Width="1000"
+                    Height="470"
+                    Width="1100"
                     Margin="5"
                     AutoGenerateColumns="False"
                     Name="ProductList">
@@ -112,7 +116,10 @@
                             Header="№"
                             Binding="{Binding Id}"/>
 
-                        <DataGridTemplateColumn>
+                        <DataGridTemplateColumn 
+                            HeaderStyle="{StaticResource DGHeaderStyle}"
+                            Header="Photo"
+                            Width="190">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image 
@@ -150,7 +157,10 @@
                                     <ListView ItemsSource="{Binding ProductCountry}">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Label/>
+                                                <Label
+                                                    Style="{StaticResource LabelStyle}"
+                                                    Content="{Binding Country.Name}"
+                                                    Background="{Binding Country.Color}"/>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>

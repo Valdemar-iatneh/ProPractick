@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:ProPractick.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="#ffcfc2"
       Title="AddEditPage">
 
     <Grid>

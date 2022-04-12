@@ -31,7 +31,6 @@
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Padding" Value="10"/>
         </Style>
-        <Image x:Key="logoImage" Source="/images/logo.jpg"/>
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -41,16 +40,12 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition Height="3*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image Source="{Binding Source, Source={StaticResource logoImage}}"
-            Grid.Column="1"
-            Grid.Row="1"/>
-        <StackPanel Grid.Column="1" Grid.Row="2">
+        <StackPanel Grid.Column="1" Grid.Row="1">
             <Label Style="{StaticResource labelForAuthorStyle}"
                 Content="Login"/>
             <TextBox Style="{StaticResource textBoxStyle}"
@@ -68,7 +63,7 @@
         <StackPanel 
             Grid.ColumnSpan="3" 
             Grid.Column="0" 
-            Grid.Row="3"
+            Grid.Row="2"
             HorizontalAlignment="Center"
             Orientation="Horizontal">
             <Button Style="{StaticResource buttonStyle}"
@@ -86,6 +81,6 @@
             FontSize="15"
             Content="Remember me"
             Grid.Column="1"
-            Grid.Row="4"/>
+            Grid.Row="3"/>
     </Grid>
 </Page>

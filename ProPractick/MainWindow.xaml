@@ -6,8 +6,48 @@
         xmlns:local="clr-namespace:ProPractick"
         mc:Ignorable="d"
         Height="450" Width="800"
-        MinHeight="450" MinWidth="800">
+        MinHeight="600" MinWidth="1000">
+    <Window.Resources>
+        <Style x:Key="BtnStyle" TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Background" Value="#ad7261"/>
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel 
+            Orientation="Horizontal"
+            Grid.Row="0">
+            <Image 
+                Source="/Images/logo.jpg"
+                OpacityMask="#ffffcfc2"/>
+            <TextBlock
+                Text="Shop"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="35"
+                Margin="200, 0"/>
+            <Button
+                Style="{StaticResource BtnStyle}"
+                Content="Back"
+                Name="BackBtn"
+                Click="BackBtn_Click"/>
+            <Button
+                Style="{StaticResource BtnStyle}"
+                Content="Forward"
+                Name="ForwardBtn"
+                Click="ForwardBtn_Click"/>
+        </StackPanel>
+        <Frame 
+            x:Name="MainFrame"
+            NavigationUIVisibility="Hidden"
+            Grid.Row="1"/>
     </Grid>
 </Window>
