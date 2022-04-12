@@ -25,8 +25,8 @@ namespace ProPractick.Pages
         public ProductListPage()
         {
             InitializeComponent();
-            ProductList.ItemsSource = DB.DBConnection.connection.Product.ToList();
-            var LvUnit = DB.DBConnection.connection.Unit.ToList();
+            ProductList.ItemsSource = DBConnection.connection.Product.ToList();
+            var LvUnit = DBConnection.connection.Unit.ToList();
             LvUnit.Insert(0, new Unit() { Id = -1, Name = "All" });
             UnitCb.ItemsSource = LvUnit;
             UnitCb.DisplayMemberPath = "Name";
@@ -84,17 +84,31 @@ namespace ProPractick.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddEditPage(new Product()));
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var isSelProduct = ProductList.SelectedItem as Product;
+            if (isSelProduct != null)
+                NavigationService.Navigate(new AddEditPage(isSelProduct));
+            else
+                MessageBox.Show("Nothing is selected");
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var isSelProduct = ProductList.SelectedItem as Product;
+            if (isSelProduct != null)
+            {
+                var result = MessageBox.Show("Delete?", "", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.OK)
+                {
+                    DBConnection.connection.SaveChanges();
+                }
+            }
+            else
+                MessageBox.Show("Nothing is selected");
         }
 
         private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
