@@ -8,80 +8,101 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Background="#ffcfc2"
       Title="AddEditPage">
+    <Page.Resources>
+        <Style x:Key="BtnStyle" TargetType="Button">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Background" Value="#ad7261"/>
+            <Setter Property="Foreground" Value="#fff"/>
+        </Style>
+        <Style x:Key="TBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="22"/>
+        </Style>
+        <Style x:Key="TBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+        <Style x:Key="CBStyle" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Orientation="Horizontal">
+            <StackPanel
+                Orientation="Vertical"
+                HorizontalAlignment="Right">
+                <TextBlock
+                    Style="{StaticResource TBlockStyle}"
+                    Text="Image"
+                    Margin="10"/>
+                <Image
+                    Source="{Binding Photo}"
+                    x:Name="PhotoProductImg"
+                    Height="200"/>
+                <Button
+                    Style="{StaticResource BtnStyle}"
+                    x:Name="AddPhoto"
+                    Content="Add photo"
+                    Click="AddPhoto_Click"/>
+            </StackPanel>
             <StackPanel Margin="10">
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
                     <TextBlock
+                        Style="{StaticResource TBlockStyle}"
                         Text="Name"
                         Margin="10"/>
                     <TextBox
+                        Style="{StaticResource TBoxStyle}"
                         Text="{Binding Name}"
                         x:Name="NameTb"
-                        Height="30"
-                        Width="200"/>
+                        Height="30"/>
                 </StackPanel>
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
                     <TextBlock
+                        Style="{StaticResource TBlockStyle}"
                         Text="Description"
                         Margin="10"/>
                     <TextBox
+                        Style="{StaticResource TBoxStyle}"
+                        TextWrapping="Wrap"
                         Text="{Binding Description}"
                         x:Name="DescriptionTb"
-                        Height="30"
-                        Width="200"/>
+                        Height="150"/>
                 </StackPanel>
                 <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
                     <TextBlock
+                        Style="{StaticResource TBlockStyle}"
                         Text="Unit"
                         Margin="10"/>
                     <ComboBox
+                        Style="{StaticResource CBStyle}"
                         SelectedItem="{Binding Unit}"
                         DisplayMemberPath="Name"
                         x:Name="UnitTb"
                         Height="30"
                         Width="200"/>
                 </StackPanel>
-                <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-                    <TextBlock
-                        Text="Image"
-                        Margin="10"/>
-                    <Button
-                        Height="40"
-                        x:Name="AddPhoto"
-                        Content="Add photo"
-                        Click="AddPhoto_Click"/>
-                    <Image
-                        Source="{Binding Photo}"
-                        x:Name="PhotoProductImg"
-                        Height="150"
-                        Width="200"/>
-                </StackPanel>
-                <StackPanel>
-                    <Button
-                        x:Name="SaveBtn"
-                        Content="Save"
-                        Click="SaveBtn_Click"/>
-                </StackPanel>
             </StackPanel>
 
             <StackPanel Margin="10">
                 <StackPanel>
-                    <Label
+                    <TextBlock
+                        Style="{StaticResource TBlockStyle}"
+                        HorizontalAlignment="Center"
                         Name="CountryLabel"
-                        Content="Countries"/>
+                        Text="Countries"/>
                     <ListView
                         Visibility="Hidden"
                         x:Name="CountryLv"
@@ -99,16 +120,19 @@
                         </ListView.ItemTemplate>
                     </ListView>
                     <ComboBox
+                        Style="{StaticResource CBStyle}"
                         Visibility="Hidden"
                         Margin="2"
                         Name="CountryCb"/>
                     <Button
+                        Style="{StaticResource BtnStyle}"
                         Visibility="Hidden"
                         Margin="2"
                         x:Name="AddCountryBtn"
                         Content="Add country"
                         Click="AddCountryBtn_Click"/>
                     <Button
+                        Style="{StaticResource BtnStyle}"
                         Visibility="Hidden"
                         Margin="2"
                         x:Name="DelCountryBtn"
@@ -116,6 +140,15 @@
                         Click="DelCountryBtn_Click"/>
                 </StackPanel>
             </StackPanel>
+        </StackPanel>
+        <StackPanel 
+            Margin="0, 0, 0, 100"
+            VerticalAlignment="Bottom">
+            <Button
+                Style="{StaticResource BtnStyle}"
+                x:Name="SaveBtn"
+                Content="Save"
+                Click="SaveBtn_Click"/>
         </StackPanel>
     </Grid>
 </Page>
