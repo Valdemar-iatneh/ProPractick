@@ -34,5 +34,28 @@ namespace ProPractick.Properties {
                 this["Login"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LoginAttempts {
+            get {
+                return ((int)(this["LoginAttempts"]));
+            }
+            set {
+                this["LoginAttempts"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime TimeLoginAttempt {
+            get {
+                return ((global::System.DateTime)(this["TimeLoginAttempt"]));
+            }
+            set {
+                this["TimeLoginAttempt"] = value;
+            }
+        }
     }
 }

@@ -24,12 +24,16 @@ namespace ProPractick.Pages
     public partial class AuthorizationPage : Page
     {
         public static ObservableCollection<User> users { get; set; }
+
         public AuthorizationPage()
         {
             InitializeComponent();
             LoginTB.Text = Properties.Settings.Default.Login;
-            LoginTB.Text = "Kami";
-            PasswordTB.Password = "K99mi";
+            Properties.Settings.Default.LoginAttempts = 0;
+            Properties.Settings.Default.TimeLoginAttempt = DateTime.Now;
+            Properties.Settings.Default.Save();
+            //LoginTB.Text = "Kami";
+            //PasswordTB.Password = "K99mi";
         }
 
         private void ButtonAuthoriz_Click(object sender, RoutedEventArgs e)
@@ -38,30 +42,53 @@ namespace ProPractick.Pages
             try
             {
                 var entry = users.Where(a => a.Login == LoginTB.Text && a.Password == PasswordTB.Password).FirstOrDefault();
-                if (entry == null)
+                var trueLoginFalsePass = users.Where(a => a.Login == LoginTB.Text).FirstOrDefault();
+                if (Properties.Settings.Default.TimeLoginAttempt < DateTime.Now)
                 {
-                    MessageBox.Show($"User isn't found");
-                    return;
-                }
-                if (RememberMeCB.IsChecked.GetValueOrDefault())
-                {
-                    Properties.Settings.Default.Login = entry.Login;
-                    Properties.Settings.Default.Save();
+                    if (entry == null)
+                    {
+                        if (trueLoginFalsePass != null)
+                        {
+                            Properties.Settings.Default.LoginAttempts++;
+                            Properties.Settings.Default.Save();
+                        }
+
+                        MessageBox.Show($"User isn't found");
+                        if (Properties.Settings.Default.LoginAttempts == 3)
+                        {
+                            Properties.Settings.Default.LoginAttempts = 0;
+                            Properties.Settings.Default.TimeLoginAttempt = DateTime.Now.AddMinutes(1);
+                            Properties.Settings.Default.Save();
+                            MessageBox.Show("You entered the password incorrectly 3 times",
+                                "You cannot enter a password for 1 minute");
+                        }
+
+                        return;
+                    }
+                    if (RememberMeCB.IsChecked.GetValueOrDefault())
+                    {
+                        Properties.Settings.Default.Login = entry.Login;
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.Login = null;
+                        Properties.Settings.Default.Save();
+                    }
+
+                    switch (entry.RoleId)
+                    {
+                        case 1:
+                            NavigationService.Navigate(new ProductListPage());
+                            break;
+                        case 3:
+                            NavigationService.Navigate(new ProductListPage());
+                            break;
+                    }
                 }
                 else
                 {
-                    Properties.Settings.Default.Login = null;
-                    Properties.Settings.Default.Save();
-                }
-
-                switch (entry.RoleId)
-                {
-                    case 1:
-                        NavigationService.Navigate(new ProductListPage());
-                        break;
-                    case 3:
-                        NavigationService.Navigate(new ProductListPage());
-                        break;
+                    MessageBox.Show("The penalty for incorrect password entry is not over yet");
                 }
             }
             catch (Exception ex)
