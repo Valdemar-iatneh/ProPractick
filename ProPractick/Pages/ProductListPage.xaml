@@ -143,15 +143,17 @@
                         <DataGridTextColumn
                             HeaderStyle="{StaticResource DGHeaderStyle}"
                             CellStyle="{StaticResource DGCellStyle}"
-                            Header="Unit"
-                            Binding="{Binding Unit.Name}"/>
+                            Header="Date"
+                            Binding="{Binding AddDate, StringFormat='dd.MM.yy'}"/>
                         <DataGridTextColumn
                             HeaderStyle="{StaticResource DGHeaderStyle}"
                             CellStyle="{StaticResource DGCellStyle}"
-                            Header="Date"
-                            Binding="{Binding AddDate, StringFormat='dd.MM.yy'}"/>
+                            Header="Unit"
+                            Binding="{Binding Unit.Name}"/>
 
-                        <DataGridTemplateColumn>
+                        <DataGridTemplateColumn
+                            HeaderStyle="{StaticResource DGHeaderStyle}"
+                            Header="Country">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <ListView ItemsSource="{Binding ProductCountry}">
