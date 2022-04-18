@@ -29,11 +29,8 @@ namespace ProPractick.Pages
         {
             InitializeComponent();
             LoginTB.Text = Properties.Settings.Default.Login;
-            Properties.Settings.Default.LoginAttempts = 0;
-            Properties.Settings.Default.TimeLoginAttempt = DateTime.Now;
-            Properties.Settings.Default.Save();
-            //LoginTB.Text = "Kami";
-            //PasswordTB.Password = "K99mi";
+            LoginTB.Text = "Kami";
+            PasswordTB.Password = "K99mi";
         }
 
         private void ButtonAuthoriz_Click(object sender, RoutedEventArgs e)
