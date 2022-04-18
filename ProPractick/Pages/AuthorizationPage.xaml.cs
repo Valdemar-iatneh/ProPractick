@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,9 +70,43 @@ namespace ProPractick.Pages
             }
         }
 
+        
         private void ButtonRegistr_Click(object sender, RoutedEventArgs e)
         {
+            users = new ObservableCollection<User>(DBConnection.connection.User.ToList());
 
+            if (CorrectPass(PasswordTB.Password))
+            {
+                User new_user = new User 
+                {    
+                    Login = LoginTB.Text,
+                    Password = PasswordTB.Password,
+                    RoleId = 3
+                };
+                
+                DBConnection.connection.User.Add(new_user);
+                DBConnection.connection.SaveChanges();
+                MessageBox.Show("The client is registered");
+                NavigationService.Navigate(new ProductListPage());
+            }
+            else
+            {
+                MessageBox.Show("The password doesn't match the pattern");
+            }
+        }
+        private bool CorrectPass(string _password)
+        {
+            Regex regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[^a-zA-Z0-9])\S{6,16}$");
+            foreach (var i in users)
+            {
+                if (i.Login == LoginTB.Text)
+                {
+                    MessageBox.Show("The login already exists");
+                    return false;
+                }
+            }
+
+            return regex.IsMatch(_password) ? true : false;
         }
     }
 }
