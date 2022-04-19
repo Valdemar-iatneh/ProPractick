@@ -22,14 +22,38 @@ namespace ProPractick.Pages
     public partial class ProductListPage : Page
     {
         private int actualPage;
-        public ProductListPage()
+        private User mainUser { get; set; }
+        public ProductListPage(User _user)
         {
             InitializeComponent();
-            ProductList.ItemsSource = DBConnection.connection.Product.ToList();
+            var FilterProduct = (IEnumerable<Product>)DBConnection.connection.Product.ToList();
+            FilterProduct.Where(x => x.IsDelited == true).ToList();
+            ProductList.ItemsSource = FilterProduct;
             var LvUnit = DBConnection.connection.Unit.ToList();
             LvUnit.Insert(0, new Unit() { Id = -1, Name = "All" });
             UnitCb.ItemsSource = LvUnit;
             UnitCb.DisplayMemberPath = "Name";
+
+            mainUser = _user;
+
+            if (_user.RoleId == 1)
+            {
+                AddBtn.Visibility = Visibility.Visible;
+                EditBtn.Visibility = Visibility.Visible;
+                DeleteBtn.Visibility = Visibility.Visible;
+            }
+            else if (_user.RoleId == 2)
+            {
+                AddBtn.Visibility = Visibility.Hidden;
+                EditBtn.Visibility = Visibility.Visible;
+                DeleteBtn.Visibility = Visibility.Hidden;
+            }
+            else if (_user.RoleId == 3)
+            {
+                AddBtn.Visibility = Visibility.Hidden;
+                EditBtn.Visibility = Visibility.Hidden;
+                DeleteBtn.Visibility = Visibility.Hidden;
+            }
         }
 
         private void Refresh()
@@ -40,7 +64,10 @@ namespace ProPractick.Pages
                 || x.Description.StartsWith(SearchNameDescTb.Text));
 
             if (UnitCb.SelectedIndex > 0)
+            {
                 FilterProduct = FilterProduct.Where(x => x.UnitId == (UnitCb.SelectedItem as Unit).Id || x.UnitId == -1);
+                
+            }
 
             if (DateCb.SelectedIndex == 1)
                 FilterProduct = FilterProduct.OrderBy(x => x.AddDate);
@@ -66,6 +93,8 @@ namespace ProPractick.Pages
             }
 
             ProductList.ItemsSource = FilterProduct;
+            act_count.Text = $"{DBConnection.connection.Product.Count()+1}";
+            tb_count.Text = ProductList.Items.Count.ToString();
         }
 
         private void BackListBtn_Click(object sender, RoutedEventArgs e)
@@ -84,14 +113,14 @@ namespace ProPractick.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEditPage(new Product()));
+            NavigationService.Navigate(new AddEditPage(new Product(), mainUser));
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             var isSelProduct = ProductList.SelectedItem as Product;
             if (isSelProduct != null)
-                NavigationService.Navigate(new AddEditPage(isSelProduct));
+                NavigationService.Navigate(new AddEditPage(isSelProduct, mainUser));
             else
                 MessageBox.Show("Nothing is selected");
         }
@@ -101,11 +130,14 @@ namespace ProPractick.Pages
             var isSelProduct = ProductList.SelectedItem as Product;
             if (isSelProduct != null)
             {
-                var result = MessageBox.Show("Delete?", "", MessageBoxButton.YesNo);
+                var result = MessageBox.Show($"Delete {isSelProduct.Name}?", "Delete", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.OK)
                 {
+                    isSelProduct.IsDelited = true;
+                    DBConnection.connection.Product.SingleOrDefault(p => p.Id == isSelProduct.Id);
                     DBConnection.connection.SaveChanges();
                 }
+                Refresh();
             }
             else
                 MessageBox.Show("Nothing is selected");

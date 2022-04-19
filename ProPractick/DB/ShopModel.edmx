@@ -45,6 +45,7 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="UnitId" Type="int" Nullable="false" />
           <Property Name="AddDate" Type="date" Nullable="false" />
+          <Property Name="IsDelited" Type="bit" />
         </EntityType>
         <EntityType Name="ProductCountry">
           <Key>
@@ -465,6 +466,7 @@
           <NavigationProperty Name="ProductCountry" Relationship="Self.FK_ProductCountry_Product" FromRole="Product" ToRole="ProductCountry" />
           <NavigationProperty Name="ProductIntakeProduct" Relationship="Self.FK_ProductIntakeProduct_Product" FromRole="Product" ToRole="ProductIntakeProduct" />
           <NavigationProperty Name="ProductOrder" Relationship="Self.FK_ProductOrder_Product" FromRole="Product" ToRole="ProductOrder" />
+          <Property Name="IsDelited" Type="Boolean" />
         </EntityType>
         <EntityType Name="ProductCountry">
           <Key>
@@ -889,6 +891,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="ShopModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDelited" ColumnName="IsDelited" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

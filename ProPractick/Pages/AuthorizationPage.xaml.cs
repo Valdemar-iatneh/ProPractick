@@ -73,15 +73,7 @@ namespace ProPractick.Pages
                         Properties.Settings.Default.Save();
                     }
 
-                    switch (entry.RoleId)
-                    {
-                        case 1:
-                            NavigationService.Navigate(new ProductListPage());
-                            break;
-                        case 3:
-                            NavigationService.Navigate(new ProductListPage());
-                            break;
-                    }
+                    NavigationService.Navigate(new ProductListPage(entry));
                 }
                 else
                 {
@@ -111,7 +103,7 @@ namespace ProPractick.Pages
                 DBConnection.connection.User.Add(new_user);
                 DBConnection.connection.SaveChanges();
                 MessageBox.Show("The client is registered");
-                NavigationService.Navigate(new ProductListPage());
+                NavigationService.Navigate(new ProductListPage(new_user));
             }
             else
             {

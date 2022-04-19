@@ -25,7 +25,7 @@ namespace ProPractick.Pages
     public partial class AddEditPage : Page
     {
         Product contProduct;
-        public AddEditPage(Product postProduct)
+        public AddEditPage(Product postProduct, User _user)
         {
             InitializeComponent();
 
@@ -44,6 +44,26 @@ namespace ProPractick.Pages
                 CountryLabel.Visibility= Visibility.Visible;
                 CountryCb.Visibility = Visibility.Visible;  
                 CountryLv.Visibility = Visibility.Visible; 
+            }
+
+            if (_user.RoleId == 1)
+            {
+                SaveBtn.Visibility = Visibility.Visible;
+                AddCountryBtn.Visibility = Visibility.Visible;
+                AddPhoto.Visibility = Visibility.Visible;
+                NameTb.IsReadOnly = false;
+                DescriptionTb.IsReadOnly = false;
+                UnitTb.IsDropDownOpen = true;
+            }
+            else if (_user.RoleId == 2)
+            {
+                SaveBtn.Visibility = Visibility.Hidden;
+                AddCountryBtn.Visibility = Visibility.Hidden;
+                AddPhoto.Visibility = Visibility.Hidden;
+                DelCountryBtn.Visibility = Visibility.Hidden;
+                NameTb.IsReadOnly = true;
+                DescriptionTb.IsReadOnly = true;
+                UnitTb.IsDropDownOpen = false;
             }
         }
 
